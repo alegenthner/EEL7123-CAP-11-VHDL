@@ -1,0 +1,25 @@
+C:/VHDL/EEL7123-CAP-11-VHDL/full_adder.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/VHDL/EEL7123-CAP-11-VHDL/full_adder.vhd
+Model Technology ModelSim ALTERA vcom 10.3d Compiler 2014.10 Oct  7 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity full_adder
+-- Compiling architecture Structural of full_adder
+
+} {} {}} C:/VHDL/EEL7123-CAP-11-VHDL/decod7seg.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/VHDL/EEL7123-CAP-11-VHDL/decod7seg.vhd
+Model Technology ModelSim ALTERA vcom 10.3d Compiler 2014.10 Oct  7 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity decod7seg
+-- Compiling architecture decod7seg_stru of decod7seg
+
+} {} {}} C:/VHDL/EEL7123-CAP-11-VHDL/adder_223_1111.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/VHDL/EEL7123-CAP-11-VHDL/adder_223_1111.vhd
+Model Technology ModelSim ALTERA vcom 10.3d Compiler 2014.10 Oct  7 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity adder_223_1111
+-- Compiling architecture Structural of adder_223_1111
+
+} {} {}}
