@@ -73,22 +73,34 @@ architecture Structural of usertop is
     inF <= SW(2 downto 1);
     inG <= SW(0);
 
-		U0: full_adder port map(inA(0), inC(0), inG,
+		U0: full_adder port map(  inB(0) and inA(0),
+                              inD(0) and inC(0),
+                              inG,
                               outResult(0), aux0(1)
 		);
-    U1: full_adder port map(inA(0), inA(1), inC(1),
+    U1: full_adder port map(  inB(1) and inA(0),
+                              inB(0) and inA(1),
+                              inD(0) and inC(1),
                               aux0(0), aux1(1)
     );
-    U2: full_adder port map(inA(1), inA(2), inC(2),
+    U2: full_adder port map(  inB(1) and inA(1),
+                              inB(0) and inA(2),
+                              inD(0) and inC(2),
                               aux1(0),aux2(1)
     );
-    U3: full_adder port map(inA(2), inC(2), inE(2),
+    U3: full_adder port map(  inB(1) and inA(2),
+                              inD(1) and inC(2),
+                              inE(2),
                               aux2(0),aux3(2)
     );
-    U4: full_adder port map(inC(0), inE(0), inF(0),
+    U4: full_adder port map(  inD(1) and inC(0),
+                              inE(0),
+                              inF(0),
                               aux0(2),aux5
     );
-    U5: full_adder port map(inC(1), inE(1), inF(1),
+    U5: full_adder port map(  inD(1) and inC(1), 
+                              inE(1),
+                              inF(1),
                               aux1(2),aux2(2)
     );
     -- level 2
