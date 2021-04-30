@@ -13,13 +13,6 @@ entity usertop is
 		SW    : in STD_LOGIC_VECTOR(17 downto 0);
 		LEDR : out STD_LOGIC_VECTOR(17 downto 0);
 		HEX0,HEX1,HEX2,HEX3,HEX4,HEX5,HEX6,HEX7: out std_logic_vector(6 downto 0)
-
-    --C: in std_logic;
-		-- SW(17) == C
-		--A: in std_logic_vector(3 downto 0);
-		-- SW(3 downto 0) == A
-    --S: out std_logic_vector(10 downto 0)
-		-- LEDR(10 downto 0) == S
 	 );
 end usertop;
 
@@ -27,6 +20,7 @@ architecture Structural of usertop is
 
   -- 3 bits signals
 	signal inA, inC, inE: std_logic_vector(2 downto 0);
+  signal inA0, inA1, inC0, inC1: std_logic_vector(2 downto 0);
   -- 2 bits signals
   signal inB, inD, inF: std_logic_vector(1 downto 0);
   -- 1 bit signal
@@ -73,32 +67,45 @@ architecture Structural of usertop is
     inF <= SW(2 downto 1);
     inG <= SW(0);
 
-		U0: full_adder port map(  inB(0) and inA(0),
-                              inD(0) and inC(0),
+    inA0(0) <= inB(0) and inA(0);
+    inA0(1) <= inB(0) and inA(1);
+    inA0(2) <= inB(0) and inA(2);
+    inA1(0) <= inB(1) and inA(0);
+    inA1(1) <= inB(1) and inA(1);
+    inA1(2) <= inB(1) and inA(2);
+    inC0(0) <= inD(0) and inC(0);
+    inC0(1) <= inD(0) and inC(1);
+    inC0(2) <= inD(0) and inC(2);
+    inC1(0) <= inD(1) and inC(0);
+    inC1(1) <= inD(1) and inC(1);
+    inC1(2) <= inD(1) and inC(2);
+
+		U0: full_adder port map(  inA0(0),
+                              inC0(0),
                               inG,
                               outResult(0), aux0(1)
 		);
-    U1: full_adder port map(  inB(1) and inA(0),
-                              inB(0) and inA(1),
-                              inD(0) and inC(1),
+    U1: full_adder port map(  inA1(0),
+                              inA0(1),
+                              inC0(1),
                               aux0(0), aux1(1)
     );
-    U2: full_adder port map(  inB(1) and inA(1),
-                              inB(0) and inA(2),
-                              inD(0) and inC(2),
+    U2: full_adder port map(  inA1(1),
+                              inA0(2),
+                              inC0(2),
                               aux1(0),aux2(1)
     );
-    U3: full_adder port map(  inB(1) and inA(2),
-                              inD(1) and inC(2),
+    U3: full_adder port map(  inA1(2),
+                              inC1(2),
                               inE(2),
                               aux2(0),aux3(2)
     );
-    U4: full_adder port map(  inD(1) and inC(0),
+    U4: full_adder port map(  inC1(0),
                               inE(0),
                               inF(0),
                               aux0(2),aux5
     );
-    U5: full_adder port map(  inD(1) and inC(1), 
+    U5: full_adder port map(  inC1(1),
                               inE(1),
                               inF(1),
                               aux1(2),aux2(2)
